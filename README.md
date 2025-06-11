@@ -1,8 +1,6 @@
-# starter-widget
+# napps-widget
 
-This repo demonstrates a minimal setup for building an Artifact widget. It loads
-and saves a custom `profile.json` file checked against a Zod schema. If the file
-is missing a default one is written automatically.
+This project demonstrates a widget running inside an Artifact Frame. It manages a list of "natural applications" (napps) stored in `napps.json` and persists changes back to the repository.
 
 ## Development
 
@@ -16,18 +14,19 @@ npm run dev
 npm run build
 ```
 
-Load `dist/index.html` in an `ArtifactFrameHolder` to embed the widget inside
-another application.
+Load `dist/index.html` in an `ArtifactFrameHolder` to embed the widget.
 
 ### Data shape
 
-The profile data is defined in `src/types/account.ts`:
+The napp data structure is defined in `src/types/napp.ts` and looks like this:
 
 ```ts
-export const accountDataSchema = z.object({
-  name: z.string()
+export const nappSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  description: z.string(),
+  version: z.string(),
+  isEnabled: z.boolean(),
+  installDate: z.string()
 })
 ```
-
-The widget exposes a single input that edits this value and saves it back to
-`profile.json`.
