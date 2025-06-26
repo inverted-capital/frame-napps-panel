@@ -154,7 +154,7 @@ const NappsView: React.FC = () => {
             filteredInstalledNapps.map((napp) => (
               <div
                 key={napp.id}
-                className="bg-white rounded-lg border border-gray-200 overflow-hidden"
+                className="bg-white rounded-lg border border-gray-200 "
               >
                 <div className="p-4">
                   <div className="flex items-start justify-between">
